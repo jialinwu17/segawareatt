@@ -366,6 +366,7 @@ message LayerParameter {
   optional BiasParameter bias_param = 141;
   optional BiasChannelParameter bias_channel_param = 149;
   optional ConcatParameter concat_param = 104;
+  optional ObjectKernelConvolutionParameter object_kernel_convolution_param = 485;
   optional ContrastiveLossParameter contrastive_loss_param = 105;
   optional ConvolutionParameter convolution_param = 106;
   optional DataParameter data_param = 107;
@@ -416,11 +417,50 @@ message LayerParameter {
   optional Im2distParameter im2dist_param = 154;
   optional Im2parityParameter im2parity_param = 155;
   optional NormConvParameter norm_conv_param = 156;
+  optional PermuteParameter permute_param = 486;
   optional NormConvMeanfieldParameter norm_conv_meanfield_param = 157;
 }
 
 // Message that stores parameters used to apply transformation
 // to the data layer's data
+
+
+message PermuteParameter {
+  optional int32 type = 1[default = 0];
+}
+message ObjectKernelConvolutionParameter  {
+  optional int32 num_output = 1; // The number of outputs for the layer
+  
+  optional int32 pad = 3; // The padding size; defaults to 0
+  optional int32 kernel_size = 4; // The kernel size
+  optional int32 stride = 6; // The stride; defaults to 1
+  
+  optional int32 dilation = 18; // The dilation; defaults to 1
+
+  
+  optional int32 pad_h = 9 [default = 0]; // The padding height (2D only)
+  optional int32 pad_w = 10 [default = 0]; // The padding width (2D only)
+  optional int32 kernel_h = 11; // The kernel height (2D only)
+  optional int32 kernel_w = 12; // The kernel width (2D only)
+  optional int32 stride_h = 13; // The stride height (2D only)
+  optional int32 stride_w = 14; // The stride width (2D only)
+  optional int32 group = 5 [default = 1]; // The group size for group conv
+  optional float lr_mul = 21  [default = 0.01];//reduce gradient
+  
+  enum Engine {
+    DEFAULT = 0;
+    CAFFE = 1;
+    CUDNN = 2;
+  }
+  optional Engine engine = 15 [default = DEFAULT];
+
+  optional int32 axis = 16 [default = 1];
+  optional bool force_nd_im2col = 17 [default = false];
+  optional int32 samples = 20[default = 3];
+  optional int32 kernel_stride = 19[default = 2];
+}
+
+
 message TransformationParameter {
   // For data pre-processing, we can do simple scaling and subtracting the
   // data mean, if provided. Note that the mean subtraction is always carried

@@ -16,7 +16,7 @@ layer {
     mean_value: 122.675
   }
   image_data_param {
-    root_folder: "/home/aharley/datasets/VOC2012"
+    root_folder: "/workspace/jialinwu/data/VOCdevkit0712/VOC2012"
     source: "segaware/list/voc_test.txt"
     batch_size: 1
     label_type: NONE

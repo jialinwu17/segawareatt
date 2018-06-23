@@ -1,4 +1,4 @@
-model_name = 'res';
+model_name = 'res0_5000';
 
 %feature_type = 'fc1'; 
 %feature_type = 'fc8'; 

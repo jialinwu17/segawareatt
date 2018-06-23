@@ -1,4 +1,4 @@
-train_net: "segaware/config/supergiven_9/train_voc_trainval_aug.prototxt"
+train_net: "segaware/config/res/train_voc_trainval_aug.prototxt"
 
 lr_policy: "poly"
 power: 0.9
@@ -11,6 +11,6 @@ max_iter: 5000
 momentum: 0.9
 weight_decay: 0.0005
 
-snapshot: 5000
-snapshot_prefix: "segaware/model/supergiven_9/train_voc_trainval_aug"
+snapshot: 500
+snapshot_prefix: "segaware/model/res/train_voc_trainval_aug"
 solver_mode: GPU

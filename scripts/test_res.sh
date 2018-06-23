@@ -2,7 +2,7 @@
 NET_ID=res # this name is used for the config/model/feature/log dirs
 
 ## dataset details
-DATA_ROOT=~/datasets/VOC2012
+DATA_ROOT=/workspace/jialinwu/data/VOCdevkit0712/VOC2012
 #TRAIN_SET=voc_train_aug
 TRAIN_SET=voc_trainval_aug
 #TEST_SET=voc_val
@@ -20,7 +20,7 @@ ITERS=1456 # voc test
 ITER=5000
 
 EXP=segaware
-CAFFE_DIR=~/segaware/caffe
+CAFFE_DIR=../caffe
 CAFFE_BIN=${CAFFE_DIR}/build/tools/caffe.bin
 
 
@@ -39,6 +39,8 @@ CRF_LR2=0 # sparse-crf internal weights
 
 SOLVER_MODE=GPU
 GPU_ID="0"
+#CROP_SIZE=513
+#HALF_SIZE=257
 CROP_SIZE=513
 HALF_SIZE=257
 BATCH_SIZE=1
@@ -72,12 +74,12 @@ LOG_DIR=${EXP}/log/${NET_ID}
 mkdir -p ${LOG_DIR}
 export GLOG_log_dir=${LOG_DIR}
 
-MODEL=segaware/model/${NET_ID}/train_voc_trainval_aug_iter_${ITER}.caffemodel
+MODEL=segaware/model/${NET_ID}_flow/train_voc_trainval_aug_iter_${ITER}.caffemodel
 
-for pname in test; do
-    sed "$(eval echo $(cat sub.sed))" \
-        ${CONFIG_DIR}/${pname}.prototxt > ${CONFIG_DIR}/${pname}_${TEST_SET}.prototxt
-done
+#for pname in test; do
+#    sed "$(eval echo $(cat sub.sed))" \
+#        ${CONFIG_DIR}/${pname}.prototxt > ${CONFIG_DIR}/${pname}_${TEST_SET}.prototxt
+#done
 
 CMD="${CAFFE_BIN} test \
          --model=${CONFIG_DIR}/test_${TEST_SET}.prototxt \
