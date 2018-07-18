@@ -15521,9 +15521,9 @@ layer {
 }
 
 layer {
-    bottom: "res05_b_conv_object_bb_2"
-    top: "res05_b_conv_object_bb_2"
-    name: "res05_b_conv_object_bb_2_relu"
+    bottom: "res05_conv_object_bb_2"
+    top: "res05_conv_object_bb_2"
+    name: "res05_conv_object_bb_2_relu"
     type: "ReLU"
 }
 
@@ -23236,9 +23236,9 @@ layer {
 }
 
 layer {
-    bottom: "res075_b_conv_object_bb_2"
-    top: "res075_b_conv_object_bb_2"
-    name: "res075_b_conv_object_bb_2_relu"
+    bottom: "res075_conv_object_bb_2"
+    top: "res075_conv_object_bb_2"
+    name: "res075_conv_object_bb_2_relu"
     type: "ReLU"
 }
 
