@@ -7806,9 +7806,9 @@ layer {
 }
 
 layer {
-    bottom: "b_conv_object_bb_2"
-    top: "b_conv_object_bb_2"
-    name: "b_conv_object_bb_2_relu"
+    bottom: "conv_object_bb_2"
+    top: "conv_object_bb_2"
+    name: "conv_object_bb_2_relu"
     type: "ReLU"
 }
 
